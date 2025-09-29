@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ImageTrail from './ui/image-trail';
 import HeartHover from './ui/heart-hover';
+import HeartTrail from './ui/heart-trail';
 
 // Sample images from the assets folder
 const images = [
@@ -49,8 +50,8 @@ function App() {
           />
         </svg>
       </div>
-       <HeartHover size={360} onHover={(inside) => console.log('inside?', inside)} />
-      <ImageTrail
+       {/* <HeartHover size={360} onHover={(inside) => console.log('inside?', inside)} /> */}
+      {/* <ImageTrail
         key={`image-trail-${timestampKey}`}
         items={images}
         variant={1}
@@ -58,7 +59,8 @@ function App() {
         //   console.log("Heart shape detected!");
         //   alert("Heart shape detected!");
         // }}
-      />
+      /> */}
+      <HeartTrail size={360} />
     </div>
   );
 }
