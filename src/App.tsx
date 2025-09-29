@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ImageTrail from './ui/image-trail';
+import HeartHover from './ui/heart-hover';
 
 // Sample images from the assets folder
 const images = [
@@ -31,11 +32,32 @@ function App() {
   const [timestampKey] = useState(Date.now());
 
   return (
-    <div className="h-screen relative overflow-hidden">
+    <div className="h-screen relative overflow-hidden bg-gray-100">
+      {/* <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-50 bg-white/80 p-4 rounded-lg shadow-lg text-center max-w-md">
+        <h1 className="text-xl font-bold mb-2">Heart Shape Detection</h1>
+        <p className="text-sm mb-2">Draw a heart shape with your mouse to trigger the detection!</p>
+        <p className="text-xs text-gray-600">Start at the top, go down and around to form the heart shape.</p>
+      </div> */}
+      <div className="absolute inset-0 pointer-events-none z-40 flex items-center justify-center">
+        <svg width="200" height="200" viewBox="0 0 100 100" className="opacity-20">
+          <path
+            d="M50,85 C30,65 15,50 15,30 C15,15 30,15 40,25 C50,15 65,15 65,30 C65,50 50,65 50,85 Z"
+            fill="none"
+            stroke="#e53e3e"
+            strokeWidth="1.5"
+            strokeDasharray="4,4"
+          />
+        </svg>
+      </div>
+       <HeartHover size={360} onHover={(inside) => console.log('inside?', inside)} />
       <ImageTrail
         key={`image-trail-${timestampKey}`}
         items={images}
         variant={1}
+        // onHeartDetected={() => {
+        //   console.log("Heart shape detected!");
+        //   alert("Heart shape detected!");
+        // }}
       />
     </div>
   );
