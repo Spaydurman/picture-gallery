@@ -1223,7 +1223,7 @@ export default function ImageTrail({ items = [], variant = 1, onHover }: ImageTr
         </div>
       ))}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <p className="text-4xl font-bold text-gray-500 select-none">
+        <p className="text-4xl font-bold text-gray-400 select-none">
           Hover Me
         </p>
       </div>

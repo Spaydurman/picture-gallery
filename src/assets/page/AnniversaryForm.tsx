@@ -66,6 +66,15 @@ const AnniversaryForm: React.FC = () => {
          >
            Submit
          </button>
+         
+         <div className="text-center mt-4">
+           <a
+             href="/image-carousel"
+             className="text-pink-500 hover:text-pink-700 underline"
+           >
+             View Scrollable Image Carousel
+           </a>
+         </div>
        </form>
      </div>
    </div>
