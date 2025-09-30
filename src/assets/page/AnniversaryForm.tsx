@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import FloatingHearts from './ui/FloatingHearts';
-import Clouds from './ui/Clouds';
+import FloatingHearts from '../../ui/floating-hearts';
+import Clouds from '../../ui/cloud';
 
 const AnniversaryForm: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<string>('');
