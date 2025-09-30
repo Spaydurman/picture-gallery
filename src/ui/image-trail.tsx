@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
 function lerp(a: number, b: number, n: number): number {
@@ -1186,9 +1186,10 @@ const variantMap: Record<number, ImageTrailConstructor> = {
 interface ImageTrailProps {
   items?: string[];
   variant?: number;
+  onHover?: () => void;
 }
 
-export default function ImageTrail({ items = [], variant = 1 }: ImageTrailProps): JSX.Element {
+export default function ImageTrail({ items = [], variant = 1, onHover }: ImageTrailProps): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -1198,8 +1199,18 @@ export default function ImageTrail({ items = [], variant = 1 }: ImageTrailProps)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [variant, items]);
 
+  const handleMouseEnter = () => {
+    if (onHover) {
+      onHover();
+    }
+  };
+
   return (
-    <div className="w-full h-full relative z-[100] rounded-lg bg-transparent overflow-visible" ref={containerRef}>
+    <div
+      className="w-full h-screen relative z-[100] rounded-lg bg-transparent overflow-visible"
+      ref={containerRef}
+      onMouseEnter={handleMouseEnter}
+    >
       {items.map((url, i) => (
         <div
           className="content__img w-[190px] aspect-[1.1] rounded-[15px] absolute top-0 left-0 opacity-0 overflow-hidden [will-change:transform,filter]"
@@ -1211,6 +1222,11 @@ export default function ImageTrail({ items = [], variant = 1 }: ImageTrailProps)
           />
         </div>
       ))}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+        <p className="text-4xl font-bold text-gray-400 select-none">
+          Hover Me
+        </p>
+      </div>
     </div>
   );
 }
