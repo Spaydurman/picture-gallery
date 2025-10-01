@@ -44,16 +44,16 @@ const AnniversarySuccess: React.FC = () => {
         <div className="w-full flex justify-center mb-4">
           <HandwritingText
             texts={[
-              { text: "Happy Anniversary!", fontSize: 48, color: "#e75480", duration: 2500, textAlign: "center" }
+              { text: "Happy Anniversary! My Love", fontSize: 48, color: "#e75480", duration: 2500, textAlign: "center" }
             ]}
           />
         </div>
 
-        <h1 className="text-3xl font-bold text-pink-600 mb-4">Congratulations!</h1>
-        <p className="text-xl text-gray-700 mb-6">You remembered our Anniversary!</p>
+        {/* <h1 className="text-3xl font-bold text-pink-600 mb-4">Congratulations!</h1>
+        <p className="text-xl text-gray-700 mb-6">You remembered our Anniversary!</p> */}
         <div className="text-6xl mb-6">🎉</div>
         <p className="text-gray-600 mb-6 items-center w-full flex justify-center">
-            
+            You remembered our Anniversary!
         </p>
 
         <ConfettiButton
