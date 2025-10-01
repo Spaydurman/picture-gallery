@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AnniversarySuccess from '../components/anniversary-success';
 import ImageTrail from '../../ui/image-trail';
+import ScrollCarousel from '../../ui/scroll-carousel';
 
 const Anniversary: React.FC = () => {
   const [timestampKey, setTimestampKey] = useState<number>(Date.now());
@@ -44,6 +45,7 @@ const Anniversary: React.FC = () => {
         items={images}
         variant={1}
       />
+      <ScrollCarousel />
     </div>
   );
 };
