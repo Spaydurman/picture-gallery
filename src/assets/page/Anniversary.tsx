@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AnniversarySuccess from '../components/anniversary-success';
 import ImageTrail from '../../ui/image-trail';
+import ScrollTriggeredScaleUp from '../../ui/scroll-triggered-scale-up';
 import ScrollCarousel from '../../ui/scroll-carousel';
 
 const Anniversary: React.FC = () => {
@@ -44,6 +45,16 @@ const Anniversary: React.FC = () => {
         key={`image-trail-${timestampKey}`}
         items={images}
         variant={1}
+      />
+      <ScrollTriggeredScaleUp
+        text="Our Journey Together This Year"
+        fontSize="4rem"
+        color="#1678b9ff"
+        scaleFrom={0.5}
+        scaleTo={1}
+        duration={1.5}
+        stagger={true}
+        staggerDuration={0.07}
       />
       <ScrollCarousel />
     </div>
