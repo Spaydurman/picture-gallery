@@ -9,7 +9,7 @@ function App() {
 
   const isCountdownComplete = () => {
     const countdownCompleted = sessionStorage.getItem('countdownCompleted');
-    const targetDate = new Date('2025-10-01T11:11:00');
+    const targetDate = new Date('2025-10-14T00:00:00');
     const currentDate = new Date();
     return countdownCompleted === 'true' || currentDate >= targetDate;
   };

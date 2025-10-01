@@ -8,7 +8,7 @@ const AnniversaryForm: React.FC = () => {
   const [isCountdownComplete, setIsCountdownComplete] = useState(false);
   const navigate = useNavigate();
 
-  const targetDate = new Date('2025-10-01T11:15:00');
+  const targetDate = new Date('2025-10-14T00:00:00');
 
   useEffect(() => {
     const countdownCompleted = sessionStorage.getItem('countdownCompleted');
