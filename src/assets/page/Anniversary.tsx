@@ -3,6 +3,7 @@ import AnniversarySuccess from '../components/anniversary-success';
 import ImageTrail from '../../ui/image-trail';
 import ScrollTriggeredScaleUp from '../../ui/scroll-triggered-scale-up';
 import ScrollCarousel from '../../ui/scroll-carousel';
+import HandwritingText from '../../ui/handwriting-text';
 
 // Import images
 import image1 from '../../assets/images/us/171542217425696.jpg';
