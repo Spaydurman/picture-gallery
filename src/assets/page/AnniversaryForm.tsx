@@ -8,16 +8,13 @@ const AnniversaryForm: React.FC = () => {
   const [isCountdownComplete, setIsCountdownComplete] = useState(false);
   const navigate = useNavigate();
 
-  // Define the target date for the countdown (October 14, 2025)
-  const targetDate = new Date('2025-10-14T00:00:00');
+  const targetDate = new Date('2025-10-01T11:15:00');
 
   useEffect(() => {
-    // Check if the countdown has already completed in a previous session
     const countdownCompleted = sessionStorage.getItem('countdownCompleted');
     if (countdownCompleted === 'true') {
       setIsCountdownComplete(true);
     } else {
-      // Check if current date is past the target date
       const currentDate = new Date();
       if (currentDate >= targetDate) {
         sessionStorage.setItem('countdownCompleted', 'true');
@@ -31,10 +28,8 @@ const AnniversaryForm: React.FC = () => {
     setIsCountdownComplete(true);
   };
 
-  // Redirect to success page directly when countdown is complete
   useEffect(() => {
     if (isCountdownComplete) {
-      // Store a flag in sessionStorage to indicate the correct date was entered
       sessionStorage.setItem('anniversaryCorrect', 'true');
       navigate('/anniversary-success');
     }
