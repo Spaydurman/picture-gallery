@@ -4,7 +4,7 @@ import ImageTrail from '../../ui/image-trail';
 import ScrollTriggeredScaleUp from '../../ui/scroll-triggered-scale-up';
 import ScrollCarousel from '../../ui/scroll-carousel';
 import HandwritingText from '../../ui/handwriting-text';
-
+import Message from '../components/message';
 // Import images
 import image1 from '../../assets/images/us/171542217425696.jpg';
 import image2 from '../../assets/images/us/171542218141616.jpg';
@@ -80,7 +80,8 @@ const Anniversary: React.FC = () => {
         stagger={true}
         staggerDuration={0.07}
       />
-      <ScrollCarousel />
+      {/* <ScrollCarousel /> */}
+      <Message />
     </div>
   );
 };
