@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion, AnimatePresence } from 'framer-motion';
 gsap.registerPlugin(ScrollTrigger);
 
 import img1 from '../assets/images/us/IMG_20240707_210839_408@1052067932.jpg';
@@ -30,6 +31,7 @@ const PolaroidBorder: React.FC<{
   children?: React.ReactNode;
 }> = ({ images = DEFAULT_IMAGES, children }) => {
   const [polaroids, setPolaroids] = useState<Polaroid[]>([]);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const idRef = useRef(1);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -89,15 +91,29 @@ const PolaroidBorder: React.FC<{
     }
   }, [polaroids]);
 
+  // Card-pick preview animation variants
+  const previewVariants = {
+    hidden: { opacity: 0, scale: 0.8, rotateY: -90 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotateY: 0,
+      transition: { type: 'spring', stiffness: 120, damping: 12 },
+    },
+    exit: { opacity: 0, scale: 0.8, rotateY: 90 },
+  };
+
   return (
     <div ref={containerRef} className="relative h-full w-full overflow-visible">
+      {/* Left Polaroids */}
       <div className="absolute top-0 left-0 w-20 h-full pointer-events-none">
         {polaroids
           .filter((p) => p.side === 'left')
           .map((p) => (
             <div
               key={p.id}
-              className="absolute polaroid-item"
+              className="absolute polaroid-item pointer-events-auto cursor-pointer"
+              onClick={() => setPreviewImage(p.img)}
               style={{
                 top: `${p.positionY}%`,
                 transform: `rotate(${p.rotation}deg) scale(${p.scale})`,
@@ -124,13 +140,15 @@ const PolaroidBorder: React.FC<{
           ))}
       </div>
 
+      {/* Right Polaroids */}
       <div className="absolute top-0 right-0 w-20 h-full pointer-events-none">
         {polaroids
           .filter((p) => p.side === 'right')
           .map((p) => (
             <div
               key={p.id}
-              className="absolute polaroid-item"
+              className="absolute polaroid-item pointer-events-auto cursor-pointer"
+              onClick={() => setPreviewImage(p.img)}
               style={{
                 top: `${p.positionY}%`,
                 transform: `rotate(${p.rotation}deg) scale(${p.scale})`,
@@ -157,7 +175,33 @@ const PolaroidBorder: React.FC<{
           ))}
       </div>
 
+      {/* Center Content */}
       <div className="w-full flex justify-center z-10">{children}</div>
+
+      {/* Image Preview Modal */}
+      <AnimatePresence>
+        {previewImage && (
+          <motion.div
+            className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
+            onClick={() => setPreviewImage(null)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.img
+              key={previewImage}
+              src={previewImage}
+              alt="preview"
+              className="rounded-xl shadow-2xl cursor-pointer w-[500px] h-auto"
+              variants={previewVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              onClick={(e) => e.stopPropagation()} // prevent closing on image click
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

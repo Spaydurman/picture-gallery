@@ -80,7 +80,7 @@ const Anniversary: React.FC = () => {
         stagger={true}
         staggerDuration={0.07}
       />
-      {/* <ScrollCarousel /> */}
+      <ScrollCarousel />
       <Message />
     </div>
   );
