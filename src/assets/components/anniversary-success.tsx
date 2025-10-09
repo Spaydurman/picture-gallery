@@ -44,7 +44,7 @@ const AnniversarySuccess: React.FC = () => {
         <div className="w-full flex justify-center mb-4">
           <HandwritingText
             texts={[
-              { text: "Happy Anniversary! My Love", fontSize: 48, color: "#e75480", duration: 2500, textAlign: "center" }
+              { text: "Happy 2nd Anniversary!!!! My Love", fontSize: 48, color: "#e75480", duration: 2500, textAlign: "center" }
             ]}
           />
         </div>

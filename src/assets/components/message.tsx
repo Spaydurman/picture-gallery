@@ -26,7 +26,7 @@ const Message: React.FC = () => {
     <div className="h-auto min-h-screen bg-gradient-to-br from-pink-100 to-purple-100 p-4">
 
       <PolaroidBorder>
-        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-[80%] w-full text-center z-index-99999">
+        <div className="old-paper-bg rounded-2xl shadow-xl p-8 max-w-[80%] w-full text-center z-index-99999 border border-amber-100">
           <div className="w-full flex justify-center">
             <HandwritingText
             texts={[
@@ -34,7 +34,7 @@ const Message: React.FC = () => {
                 text: message,
                 fontSize: 32,
                 color: "blue",
-                duration: 2500,
+                durationPerChar: 100,
                 textAlign: "left",
                 lineGap: 1, // optional tighter spacing
               },
