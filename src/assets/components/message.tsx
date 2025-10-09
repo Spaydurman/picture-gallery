@@ -14,6 +14,14 @@ const Message: React.FC = () => {
     }
   }, [navigate]);
 
+    const message = `Dear My Love,\n
+    It's been two years since sinagot mo po ako. Two years na maraming adventures, kulitan, tampuhan, tawanan, away, di pagkakaunawaan, ups and down. Pero kahit ano man mangyari, ano man ang panahon, ano man ang pagsubok, ikaw pa rin ang aking pinili at pipiliin.\n
+    I thank God kasi ibinigay ka Niya sa'kin. I prayed for you to Him and He answered. You are such a blessing sa buhay ko. You've given more joy and colors sa buhay ko. You've given me comfort kaya gano'n na lang din ako kakalmado at mabilis makatulog kapag kasama ka.\n
+    I pray and hope na soon makasama kita sa iisang tahanan at magkatabi sa bawat pagtulog. I also pray and hope na makasama na kita ulit mag praise and worship kay Lord.\n
+    I love you soooo muchhh my loveee. May we continue this journey and love for the rest of our life. Happy 2nd Anniversary my loveee. Muuahhhh\n
+    Love,\n
+    Clark, Dadduy.`;
+
   return (
     <div className="h-auto min-h-screen bg-gradient-to-br from-pink-100 to-purple-100 p-4">
 
@@ -23,9 +31,7 @@ const Message: React.FC = () => {
             <HandwritingText
             texts={[
               {
-                text: `My Dearest,\n
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus interdum vel mi at cursus. Proin laoreet, justo eu imperdiet gravida, eros lorem finibus mauris, nec blandit lectus lorem nec libero. Suspendisse eget augue sed arcu hendrerit dictum in nec magna.\n
-          Curabitur ultricies velit sit amet lorem tempus, in sodales lacus bibendum. Mauris egestas, ante in tempor tincidunt, nisl est ultrices libero, non commodo velit nibh id nisi. Nulla facilisi. Sed sit amet diam in augue tristique fermentum sed quis purus.\nForever yours,\nLorem Ipsum.`,
+                text: message,
                 fontSize: 32,
                 color: "blue",
                 duration: 2500,
