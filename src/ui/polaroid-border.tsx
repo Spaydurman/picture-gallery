@@ -4,10 +4,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion, AnimatePresence } from 'framer-motion';
 gsap.registerPlugin(ScrollTrigger);
 
-import img1 from '../assets/images/us/IMG_20240707_210839_408@1052067932.jpg';
-import img2 from '../assets/images/us/IMG_20240710_200110_345@375800557.jpg';
-import img3 from '../assets/images/us/received_2015712372224994.jpeg';
-import img4 from '../assets/images/us/received_614069474608436.jpeg';
+// Import all images from the polaroid folder
+import img1 from '../assets/images/polaroid/dji_mimo_20250911_191834_0_1757937928922_photo@1178921917.jpg';
+import img2 from '../assets/images/polaroid/dji_mimo_20250914_130020_0_1757937898321_photo@-966419285.jpg';
+import img3 from '../assets/images/polaroid/dji_mimo_20250920_135118_0_1758666494976_photo@1394066523.jpg';
+import img4 from '../assets/images/polaroid/dji_mimo_20250920_145648_0_1758666384845_photo@857286591.jpg';
+import img5 from '../assets/images/polaroid/dji_mimo_20250927_165112_0_1759049211117_photo@525445867.jpg';
+import img6 from '../assets/images/polaroid/IMG_6454@-1826141758.JPG';
+import img7 from '../assets/images/polaroid/IMG_20250221_164149_505.JPG';
+import img8 from '../assets/images/polaroid/IMG_20250221_164156_946.JPG';
+import img9 from '../assets/images/polaroid/IMG_20250501_225106_561.jpg';
+import img10 from '../assets/images/polaroid/IMG_20250601_204631_626.jpg';
+import img11 from '../assets/images/polaroid/IMG_20250801_213353_834.jpg';
+import img12 from '../assets/images/polaroid/IMG_20250905_174348_303@45280689.jpg';
+import img13 from '../assets/images/polaroid/received_576547451958733.jpeg';
+import img14 from '../assets/images/polaroid/received_2038403359995674.jpeg';
 
 type Side = 'left' | 'right';
 
@@ -20,7 +31,7 @@ type Polaroid = {
   positionY: number;
 };
 
-const DEFAULT_IMAGES = [img1, img2, img3, img4].filter(Boolean) as string[];
+const DEFAULT_IMAGES = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14].filter(Boolean) as string[];
 
 function randomBetween(min: number, max: number) {
   return Math.random() * (max - min) + min;
@@ -98,7 +109,7 @@ const PolaroidBorder: React.FC<{
       opacity: 1,
       scale: 1,
       rotateY: 0,
-      transition: { type: 'spring', stiffness: 120, damping: 12 },
+      transition: { type: 'spring' as const, stiffness: 120, damping: 12 },
     },
     exit: { opacity: 0, scale: 0.8, rotateY: 90 },
   };
