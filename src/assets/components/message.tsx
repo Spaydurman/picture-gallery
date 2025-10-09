@@ -33,7 +33,7 @@ const Message: React.FC = () => {
               {
                 text: message,
                 fontSize: 32,
-                color: "blue",
+                color: "black",
                 durationPerChar: 100,
                 textAlign: "left",
                 lineGap: 1, // optional tighter spacing
