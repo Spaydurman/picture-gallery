@@ -4,8 +4,8 @@ import ImageTrail from '../../ui/image-trail';
 import ScrollTriggeredScaleUp from '../../ui/scroll-triggered-scale-up';
 import ScrollCarousel from '../../ui/scroll-carousel';
 import HandwritingText from '../../ui/handwriting-text';
+
 import Message from '../components/message';
-// Import images
 import image1 from '../../assets/images/us/171542217425696.jpg';
 import image2 from '../../assets/images/us/171542218141616.jpg';
 import image3 from '../../assets/images/us/1715422182297050.jpg';
@@ -27,13 +27,15 @@ import image18 from '../../assets/images/us/received_576547451958733.jpeg';
 import image19 from '../../assets/images/us/received_614069474608436.jpeg';
 import image20 from '../../assets/images/us/received_978533464089822.jpeg';
 import image21 from '../../assets/images/us/received_2015712372224994.jpeg';
+import lilyOfTheValley from '../../assets/music/lily of the valley.mp3';
+import growAsWeGo from '../../assets/music/grow as we go.mp3';
+import MusicPlayer from '../../ui/music-player';
 
 const Anniversary: React.FC = () => {
   const [timestampKey, setTimestampKey] = useState<number>(Date.now());
   const [images, setImages] = useState<string[]>([]);
 
- useEffect(() => {
-    // Load images from the assets directory
+  useEffect(() => {
     const imagePaths = [
       image1,
       image2,
@@ -82,6 +84,7 @@ const Anniversary: React.FC = () => {
       />
       <ScrollCarousel />
       <Message />
+      <MusicPlayer songs={[lilyOfTheValley, growAsWeGo]} />
     </div>
   );
 };
