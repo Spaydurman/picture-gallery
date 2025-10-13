@@ -18,6 +18,13 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ songs, initialVolume = 0.3 })
     
     const handleEnded = () => {
       setCurrentSong(prev => (prev + 1) % songs.length);
+      
+      setTimeout(() => {
+        const audio = audioRef.current;
+        audio.play().then(() => {
+          setIsPlaying(true);
+        }).catch(e => console.log("Audio play error:", e));
+      }, 10);
     };
     
     audio.addEventListener('ended', handleEnded);
