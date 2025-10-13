@@ -8,6 +8,7 @@ interface MusicPlayerProps {
 const MusicPlayer: React.FC<MusicPlayerProps> = ({ songs, initialVolume = 0.3 }) => {
   const [currentSong, setCurrentSong] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showClickToPlay, setShowClickToPlay] = useState(true);
   const audioRef = useRef<HTMLAudioElement>(new Audio(songs[0]));
 
   useEffect(() => {
@@ -30,6 +31,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ songs, initialVolume = 0.3 })
         setTimeout(() => {
           audio.play().then(() => {
             setIsPlaying(true);
+            setShowClickToPlay(false);
           }).catch(e => console.log("Audio play error:", e));
         }, 100);
         window.removeEventListener('scroll', handleScroll);
@@ -44,7 +46,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ songs, initialVolume = 0.3 })
       window.removeEventListener('scroll', handleScroll);
       audio.currentTime = 0;
     };
-  }, [currentSong, songs, initialVolume]);
+  }, [currentSong, songs, initialVolume, setShowClickToPlay]);
 
   const togglePlayPause = () => {
     const audio = audioRef.current;
@@ -54,6 +56,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ songs, initialVolume = 0.3 })
     } else {
       audio.play().then(() => {
         setIsPlaying(true);
+        setShowClickToPlay(false);
       }).catch(e => {
         console.log("Audio play error:", e);
         if (e.name === 'NotAllowedError') {
@@ -68,6 +71,12 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ songs, initialVolume = 0.3 })
     audio.pause();
     audio.currentTime = 0;
     setCurrentSong(prev => (prev + 1) % songs.length);
+
+    setTimeout(() => {
+      audio.play().then(() => {
+        setIsPlaying(true);
+      }).catch(e => console.log("Audio play error:", e));
+    }, 10);
   };
 
   const playPrevious = () => {
@@ -75,6 +84,12 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ songs, initialVolume = 0.3 })
     audio.pause();
     audio.currentTime = 0;
     setCurrentSong(prev => (prev - 1 + songs.length) % songs.length);
+
+    setTimeout(() => {
+      audio.play().then(() => {
+        setIsPlaying(true);
+      }).catch(e => console.log("Audio play error:", e));
+    }, 10);
   };
 
   const currentSongTitle = currentSong === 0 ? "Lily Of The Valley" : "Grow As We Go";
@@ -110,7 +125,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ songs, initialVolume = 0.3 })
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m7 18 6-6-6-6"/><path d="M17 6v12"/></svg>
       </button>
-      {!isPlaying && (
+      {showClickToPlay && !isPlaying && (
         <div className="absolute -top-8 right-2 bg-black text-white text-xs rounded py-1 px-2 animate-pulse">
           Click to play
         </div>
