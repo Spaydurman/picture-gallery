@@ -74,7 +74,6 @@ const Anniversary: React.FC = () => {
       />
       <ScrollTriggeredScaleUp
         text="Our Journey Together This Year"
-        fontSize="4rem"
         color="#1678b9ff"
         scaleFrom={0.5}
         scaleTo={1}
